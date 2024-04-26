@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\AlbumRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AlbumRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: AlbumRepository::class)]
 class Album
@@ -13,12 +14,15 @@ class Album
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['album:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Groups(['album:read', 'album:create', 'album:update'])]
     private ?string $name = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['album:read', 'album:create', 'album:update'])]
     private ?int $year = null;
 
     #[ORM\ManyToOne(inversedBy: 'albums')]
