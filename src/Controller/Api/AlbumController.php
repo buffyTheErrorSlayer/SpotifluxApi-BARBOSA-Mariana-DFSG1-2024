@@ -5,8 +5,6 @@ namespace App\Controller\Api;
 use App\Entity\Album;
 use App\Repository\AlbumRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Nelmio\ApiDocBundle\Annotation\Model;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -36,7 +34,7 @@ class AlbumController extends AbstractController
         ], 200, [], ['groups' => ['album:read']]);
     }
 
-    #[Route('/api/album/{id}', name: 'app_api_album', methods: ['GET'])]
+    #[Route('/api/album/{id}', name: 'app_api_album_get', methods: ['GET'])]
     public function get(?Album $album): JsonResponse
     {
         if(!$album)

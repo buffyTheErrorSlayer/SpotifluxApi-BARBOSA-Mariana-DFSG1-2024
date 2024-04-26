@@ -32,6 +32,7 @@ class Album
      * @var Collection<int, Track>
      */
     #[ORM\OneToMany(targetEntity: Track::class, mappedBy: 'album')]
+    #[Groups([ 'album:read'])]
     private Collection $tracks;
 
     public function __construct()
