@@ -3,9 +3,11 @@
 {% block title %}New Artist{% endblock %}
 
 {% block body %}
-    <h1>Create new Artist</h1>
-
-    {{ include('web/artist/_form.html.twig') }}
-
-    <a href="{{ path('app_web_artist_index') }}">back to list</a>
+    <div class="container d-flex justify-content-center">
+        <div class="col-4 mt-5">
+            <h1>Create new Artist</h1>
+            {{ include('web/artist/_form.html.twig') }}
+            <a href="{{ path('app_web_artist_index') }}">back to list</a>
+        </div>
+    </div>
 {% endblock %}

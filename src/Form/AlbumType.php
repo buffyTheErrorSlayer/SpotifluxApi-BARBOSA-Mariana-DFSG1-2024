@@ -18,7 +18,7 @@ class AlbumType extends AbstractType
             ->add('year')
             ->add('artist', EntityType::class, [
                 'class' => Artist::class,
-'choice_label' => 'id',
+'choice_label' => 'name',
             ])
         ;
     }

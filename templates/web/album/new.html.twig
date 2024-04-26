@@ -3,9 +3,11 @@
 {% block title %}New Album{% endblock %}
 
 {% block body %}
-    <h1>Create new Album</h1>
-
-    {{ include('web/album/_form.html.twig') }}
-
-    <a href="{{ path('app_web_album_index') }}">back to list</a>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="col-4">
+            <h1>Create new Album</h1>
+            {{ include('web/album/_form.html.twig') }}
+            <a href="{{ path('app_web_album_index') }}">back to list</a>
+        </div>
+    </div>
 {% endblock %}

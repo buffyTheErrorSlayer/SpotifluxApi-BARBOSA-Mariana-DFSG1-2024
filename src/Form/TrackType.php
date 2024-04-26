@@ -18,7 +18,7 @@ class TrackType extends AbstractType
             ->add('duration')
             ->add('album', EntityType::class, [
                 'class' => Album::class,
-'choice_label' => 'id',
+'choice_label' => 'name',
             ])
         ;
     }
