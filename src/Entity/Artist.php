@@ -14,15 +14,18 @@ class Artist
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups([ 'artist:read'])]
     private ?int $id = null;
 
     /**
      * @var Collection<int, Album>
      */
     #[ORM\OneToMany(targetEntity: Album::class, mappedBy: 'artist')]
+    #[Groups(['album:read', 'artist:read'])]
     private Collection $albums;
 
     #[ORM\Column(length: 100)]
+    #[Groups(['artist:read', 'artist:create', 'artist:update'])]
     private ?string $name = null;
 
     public function __construct()
