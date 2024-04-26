@@ -45,6 +45,11 @@ class ArtistController extends AbstractController
     }
 
     #[Route('/api/artist/{id}', name: 'app_api_artist_get', methods:['GET'])]
+    #[OA\Response(
+        response: 200,
+        description: 'Successful response',
+        content: new Model(type: Artist::class, groups: ['artist:read'])
+    )]
     public function get(?Artist $artist): JsonResponse
     {
         if(!$artist)

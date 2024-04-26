@@ -44,6 +44,11 @@ class AlbumController extends AbstractController
     }
 
     #[Route('/api/album/{id}', name: 'app_api_album_get', methods: ['GET'])]
+    #[OA\Response(
+        response: 200,
+        description: 'Successful response',
+        content: new Model(type: Album::class, groups: ['album:read'])
+    )]
     public function get(?Album $album): JsonResponse
     {
         if(!$album)

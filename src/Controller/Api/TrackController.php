@@ -44,6 +44,11 @@ class TrackController extends AbstractController
     }
     
     #[Route('/api/track/{id}', name: 'app_api_track_get', methods:['GET'])]
+    #[OA\Response(
+        response: 200,
+        description: 'Successful response',
+        content: new Model(type: Track::class, groups: ['track:read'])
+    )]
     public function get(?Track $track): JsonResponse
     {
         if(!$track)
