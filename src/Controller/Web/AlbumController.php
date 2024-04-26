@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/web/album')]
+#[Route('/albums')]
 class AlbumController extends AbstractController
 {
     #[Route('/', name: 'app_web_album_index', methods: ['GET'])]
