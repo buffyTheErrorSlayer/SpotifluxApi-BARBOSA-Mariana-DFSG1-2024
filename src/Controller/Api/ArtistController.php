@@ -46,7 +46,7 @@ class ArtistController extends AbstractController
         }
 
         return $this->json([
-            'movie' => $artist,
+            'artist' => $artist,
         ], 200, [], ['groups' => ['artist:read']]);
     }
 
