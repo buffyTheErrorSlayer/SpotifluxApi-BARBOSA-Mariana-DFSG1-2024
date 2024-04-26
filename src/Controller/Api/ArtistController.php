@@ -12,7 +12,11 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Attributes as OA;
 
+
+#[OA\Tag(name: "Artist")]
 class ArtistController extends AbstractController
 {
 
@@ -26,6 +30,11 @@ class ArtistController extends AbstractController
     }
 
     #[Route('/api/artists', name: 'app_api_artist', methods: ['GET'])]
+    #[OA\Response(
+        response: 200,
+        description: 'Successful response',
+        content: new Model(type: Artist::class, groups: ['artist:read'])
+    )]
     public function index(): JsonResponse
     {
         $artists = $this->artistRepository->findAll();

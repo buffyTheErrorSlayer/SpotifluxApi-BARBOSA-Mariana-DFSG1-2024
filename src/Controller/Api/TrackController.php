@@ -5,7 +5,6 @@ namespace App\Controller\Api;
 use App\Entity\Track;
 use App\Repository\TrackRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Nelmio\ApiDocBundle\Annotation\Model;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,7 +12,11 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Attributes as OA;
 
+
+#[OA\Tag(name: "Track")]
 class TrackController extends AbstractController
 {
 
@@ -26,6 +29,11 @@ class TrackController extends AbstractController
 
     }
     #[Route('/api/tracks', name: 'app_api_track', methods: ['GET'])]
+    #[OA\Response(
+        response: 200,
+        description: 'Successful response',
+        content: new Model(type: Track::class, groups: ['track:read'])
+    )]
     public function index(): JsonResponse
     {
         $tracks = $this->trackRepository->findAll();
